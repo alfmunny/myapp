@@ -1,0 +1,14 @@
+body, html {
+	margin:20px;
+}
+
+ember.text-field, .ember-text-area {
+	width: 100%;
+}
+
+.active {
+	font-weight: bold;
+}
+
+.navbar {
+}
