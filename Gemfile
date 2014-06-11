@@ -18,6 +18,7 @@ gem 'ember-rails'
 gem 'ember-source'
 
 gem 'pg'
+gem 'rails_12factor',	group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
