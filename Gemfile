@@ -20,6 +20,8 @@ gem 'ember-source'
 gem 'pg'
 gem 'rails_12factor',	group: :production
 
+gem 'bcrypt-ruby', '3.1.2'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -43,4 +45,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
