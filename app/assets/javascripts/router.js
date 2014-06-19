@@ -4,5 +4,7 @@ Myapp.Router.map(function() {
 	 		this.resource('post', { path: ':post_id'});
 	 });
 	 this.resource('about');
+	 this.resource('users');
 	this.resource('new');
+	this.resource('signup');
 });

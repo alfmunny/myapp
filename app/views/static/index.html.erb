@@ -1,65 +1,58 @@
 <script type="text/x-handlebars">
-	<div class="navbar">
-		<div class="navbar-inner">
-			<a class="brand" href="#">Blog</a>
-				<ul class="nav">
-					<li>{{#link-to 'posts'}}Posts{{/link-to}}</a></li>
-					<li>{{#link-to 'about'}}About{{/link-to}}</a></li>
-					<li class="dropdown">
-				<a class="dropdown" data-toggle="dropdown" href="#">Things</a>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					<li><a>Clothing(empty)</a></li>
-					<li><a href="">Photos(empty)</a></li>
-					<li><a href="">Books(empty)</a></li>
-				</ul>
-					</li>
-				</ul>
-		</div>
-		</div>	
-			{{outlet}}
-		<a href="#myModal" class="btn" data-toggle="modal">Lauch demo modal</a>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+      	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+      	</button>
+      	<a class="navbar-brand" href="#">Brand</a>
+    	</div>
 
-		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria.labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header">
-				<button class="close" type="button" data-dismiss="modal" aria-hidden="true">x</button>
-				<h3 id="myModalLabel">Modal header</h3>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li>{{#link-to 'posts'}}Posts{{/link-to}}</li>
+					<li>{{#link-to 'about'}}About{{/link-to}}</li>
+					<li>{{#link-to 'users'}}Users{{/link-to}}</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>{{#link-to 'signup'}}Sign Up{{/link-to}}</li>
+				</ul>
 			</div>
-			<div class="modal-body">
-				<p><a href="http://www.douban.com/people/alfmunny">Get to know me on Douban</a></p>
-			</div>
-			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-				<button class="btn">Save changes</button>
-			</div>
+
 		</div>
+	</nav>
+			{{outlet}}
 </script>
 
 <script type="text/x-handlebars" id="new">
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span6">
-				{{partial 'post/edit'}}	
+				{{partial 'post/edit'}}
 				<button class="btn" {{action 'create'}}>Create</button>
 				<button class="btn" {{action 'cancel'}}>Cancel</button>
 			</div>
 			<div class="span6">
-				{{partial 'post/view'}}	
+				{{partial 'post/view'}}
 			</div>
 		</div>
 	</div>
 </script>
 
 <script type="text/x-handlebars" id="post/_edit">
-	<p>{{view Ember.TextField valueBinding='title' col="30"}}</p>
-	<p>{{view Ember.TextArea valueBinding='intro' col="30"}}</p>
-	<p>{{view Ember.TextArea valueBinding='extended' col="80" row="80"}}</p>
+	<p>{{input type="text" value=title cols="30"}}</p>
+	<p>{{textarea value=intro cols="30"}}</p>
+	<p>{{textarea value=extended cols="80" rows="20"}}</p>
 </script>
 
 <script type="text/x-handlebars" id="post/_view">
 	<div class="title">
 	<h1>{{title}}</h1>
 	</div>
-	<h4> by {{author}} <small class="muted">{{date published_at}}</small></h4>
+	<h4> by {{author}} <small class="muted">{{date publishedAt}}</small></h4>
 
 	<hr>
 
@@ -71,5 +64,3 @@
 		{{markdown extended}}
 	</div>
 </script>
-
-

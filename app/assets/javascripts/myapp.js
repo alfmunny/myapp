@@ -11,14 +11,20 @@
 //= require_self
 //
 
-Myapp.ApplicationAdapter = DS.ActiveModelAdapter;
+Myapp.ApplicationAdapter = DS.RESTAdapter;
 
 Myapp.Post = DS.Model.extend({
 	title: DS.attr('string'),
 	author: DS.attr('string'),
 	intro: DS.attr('string'),
 	extended: DS.attr('string'),
-	published_at: DS.attr('date')
+	publishedAt: DS.attr('date')
+});
+
+Myapp.User = DS.Model.extend({
+	name: DS.attr('string'),
+	email: DS.attr('string'),
+	password_digest: DS.attr('string')
 });
 
 Myapp.PostsRoute = Ember.Route.extend({
@@ -27,10 +33,16 @@ Myapp.PostsRoute = Ember.Route.extend({
 				 }
 });
 
+Myapp.UsersRoute = Ember.Route.extend({
+	model: function() {
+						return this.store.find('user');
+				}
+});
+
 Myapp.PostsController = Ember.ObjectController.extend({
 	sortProperties: [":id"],
 	sortAscending: false
-})
+});
 
 Myapp.PostRoute = Ember.Route.extend({
 	model: 	function(params) {
@@ -79,8 +91,6 @@ Myapp.PostController = Ember.ObjectController.extend({
 	}
 });
 
-Myapp.Post.FIXTURES = [];
-
 var showdown = new Showdown.converter();
 
 
@@ -93,4 +103,3 @@ Ember.Handlebars.helper('markdown', function(input) {
 		return new Handlebars.SafeString(showdown.makeHtml(input));
 	}
 });
-
